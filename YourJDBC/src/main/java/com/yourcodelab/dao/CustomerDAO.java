@@ -9,13 +9,18 @@ import com.yourcodelab.model.Customer;
 
 public class CustomerDAO extends GenericDAO{
 	private PreparedStatement ps;
-	private String SQL_INSERT = "INSERT INTO TB_CUSTOMER VALUES";
+	private String SQL_INSERT = "INSERT INTO TB_CUSTOMER(name, email, password) VALUES (?, ?, ?);";
 
 	public void insertCustomer(Customer c){
 		try {
 			openConnection();
 			
 			ps = connect.prepareStatement(SQL_INSERT);
+			ps.setString(1, c.getName());
+			ps.setString(2, c.getEmail());
+			ps.setString(3, c.getPassword());
+			
+			ps.executeUpdate();
 			
 			closeConnection();
 		} catch (ClassNotFoundException e) {
