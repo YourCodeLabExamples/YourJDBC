@@ -10,18 +10,8 @@ public class GenericDAO {
 	private ConnectDB db = new ConnectDB();
 	protected Connection connect;
 	
-	public void openConnection(){
-		connect = null;
-		
-		try {
-			connect = db.getConnection();
-		} catch (ClassNotFoundException e) {
-			System.out.println("Class not Found");
-		} catch (IOException e) {
-			System.out.println("File not Found");
-		} catch (SQLException e) {
-			System.out.println("Error on Connecting");
-		}
+	public void openConnection() throws ClassNotFoundException, IOException, SQLException{
+		connect = db.getConnection();
 	}
 	
 	public void closeConnection(){
