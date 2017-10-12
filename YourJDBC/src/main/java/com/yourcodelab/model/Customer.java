@@ -6,6 +6,13 @@ public class Customer {
 	private String email;
 	private String password;
 	
+	public Customer(Integer customerID, String name, String email, String password){
+		this.customerID = customerID;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
+	
 	public Integer getCustomerID() {
 		return customerID;
 	}
